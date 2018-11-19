@@ -10,12 +10,28 @@ for( var i = 0 ; i < topics.length; i++){
     $("body").append(btn);
   }
 
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=KKltZkbvlUXnSysuY4BNmNFcUWdnjx6V&q=cars&limit=25&offset=0&rating=G&lang=en"
 
 $.ajax({
-    url: "https://www.omdbapi.com/?t=romancing+the+stone&y=&plot=short&apikey=trilogy",
+    url: queryURL,
     method: "GET"
   }).then(function(response) {
     console.log(response);
   });
 
 
+ function getGiphs(search){
+   console.log(search)
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=KKltZkbvlUXnSysuY4BNmNFcUWdnjx6V&q="+search+"&limit=25&offset=0&rating=G&lang=en"
+
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      console.log(response);
+    });
+ }
+
+ getGiphs("planes");
+getGiphs("pizza");
+getGiphs(search);
