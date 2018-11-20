@@ -1,16 +1,28 @@
+//Array of movies
 var movies = ["Cars", "Lion King", "Insidious", "Step Brother"];
 console.log(movies);
+
+
+
+// TODO:
+// when new button is clicked, remove current giphs and display the new ones
+// maybe add some style 
+
+
+
+
+
+
+
+
+
+//created start function so when any button is pressed giphy appears
+// when button is clicked get value of input and add to array
 function start(){
   $("#button-area").empty();
   for (var i = 0; i < movies.length; i++) {
     console.log(movies[i]);
     //generate buttons for each movie in the array
-  
-  
-    // when button is clicked get value of input and add to array
-  
-    // when button is clicked show giphys page
-  
     var btn = $("<button>");
     btn.addClass("press");
     btn.text(movies[i]);
@@ -18,15 +30,17 @@ function start(){
   }
 
 }
+//call start function
 start();
 
-// var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=KKltZkbvlUXnSysuY4BNmNFcUWdnjx6V&q=cars&limit=25&offset=0&rating=G&lang=en"
 
+//GIPHY URL AND API
+//AJAX CALL
 $(".press").on("click", function () {
 console.log("button");
   var movieName = $(this).text();
   console.log(movieName);
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + movieName + "&api_key=ndWuAICsblVgBieBR4hCc5Kch0AlWtz1&rating=G"
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + movieName + "&api_key=ndWuAICsblVgBieBR4hCc5Kch0AlWtz1&rating=R"
   console.log(queryURL);
 
   $.ajax({
@@ -36,6 +50,10 @@ console.log("button");
     console.log(response);
 
 
+
+
+//create new div and img element
+//append images to page
     for (var i = 0; i < response.data.length; i++) {
       var storeGiffs = $("<div>");
       var imageGiffs = $("<img>");
@@ -48,7 +66,7 @@ console.log("button");
 })
 
 
-  //onclick for button from html
+  //onclick from button id
 $("#submit").on("click", function () {
   event.preventDefault();
   var addButton = $("#addbutton").val(); 
@@ -58,3 +76,19 @@ $("#submit").on("click", function () {
   
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=KKltZkbvlUXnSysuY4BNmNFcUWdnjx6V&q=cars&limit=25&offset=0&rating=G&lang=en"
