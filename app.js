@@ -19,7 +19,7 @@ console.log(movies);
 //created start function so when any button is pressed giphy appears
 // when button is clicked get value of input and add to array
 function start(){
-  $("#button-area").empty();
+  
   for (var i = 0; i < movies.length; i++) {
     console.log(movies[i]);
     //generate buttons for each movie in the array
@@ -36,8 +36,9 @@ start();
 
 //GIPHY URL AND API
 //AJAX CALL
-$(".press").on("click", function () {
+$("body").on("click",'.press' , function () {
 console.log("button");
+$("#store").empty();
   var movieName = $(this).text();
   console.log(movieName);
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + movieName + "&api_key=ndWuAICsblVgBieBR4hCc5Kch0AlWtz1&rating=R"
@@ -70,9 +71,10 @@ console.log("button");
 $("#submit").on("click", function () {
   event.preventDefault();
   var addButton = $("#addbutton").val(); 
+  $("#button-area").append("<button class ='press'>" + addButton + "</button>");
   movies.push(addButton);
   console.log(movies);
-  start();
+  
   
 
 })
