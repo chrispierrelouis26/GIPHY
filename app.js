@@ -1,37 +1,60 @@
-var topics = ["Movies", "Snowboarding", "Shoes", "Dirtbikes"];
-console.log(topics);
-
-for( var i = 0 ; i < topics.length; i++){
-    console.log(topics[i]);
-    // then generate buttons for each movie in the array
-
-    var btn =$("<button>");
-    btn.text(topics[i]);
-    $("body").append(btn);
+var movies = ["Cars", "Lion King", "Insidious", "Step Brother"];
+console.log(movies);
+function start(){
+  $("#button-area").empty();
+  for (var i = 0; i < movies.length; i++) {
+    console.log(movies[i]);
+    //generate buttons for each movie in the array
+  
+  
+    // when button is clicked get value of input and add to array
+  
+    // when button is clicked show giphys page
+  
+    var btn = $("<button>");
+    btn.addClass("press");
+    btn.text(movies[i]);
+    $("#button-area").append(btn);
   }
 
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=KKltZkbvlUXnSysuY4BNmNFcUWdnjx6V&q=cars&limit=25&offset=0&rating=G&lang=en"
+}
+start();
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    console.log(response);
-  });
+// var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=KKltZkbvlUXnSysuY4BNmNFcUWdnjx6V&q=cars&limit=25&offset=0&rating=G&lang=en"
 
-
- function getGiphs(search){
-   console.log(search)
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=KKltZkbvlUXnSysuY4BNmNFcUWdnjx6V&q="+search+"&limit=25&offset=0&rating=G&lang=en"
+$(".press").on("click", function () {
+console.log("button");
+  var movieName = $(this).text();
+  console.log(movieName);
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + movieName + "&api_key=ndWuAICsblVgBieBR4hCc5Kch0AlWtz1&rating=G"
+  console.log(queryURL);
 
   $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response);
-    });
- }
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
 
- getGiphs("planes");
-getGiphs("pizza");
-getGiphs(search);
+
+    for (var i = 0; i < response.data.length; i++) {
+      var storeGiffs = $("<div>");
+      var imageGiffs = $("<img>");
+      imageGiffs.attr("src", response.data[i].images.fixed_height_still.url);
+      storeGiffs.html(imageGiffs);
+      $("#store").append(storeGiffs);
+      console.log(response.data[i].images.fixed_height_still.url);
+    }
+  });
+})
+
+
+  //onclick for button from html
+$("#submit").on("click", function () {
+  event.preventDefault();
+  var addButton = $("#addbutton").val(); 
+  movies.push(addButton);
+  console.log(movies);
+  start();
+  
+
+})
