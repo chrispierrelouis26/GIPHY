@@ -27,7 +27,7 @@ start();
 //AJAX CALL
 $("body").on("click",'.press' , function () {
 console.log("button");
-$("#store").empty();
+$("#results").empty();
   var movieName = $(this).text();
   console.log(movieName);
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + movieName + "&api_key=ndWuAICsblVgBieBR4hCc5Kch0AlWtz1&rating=R&limit=10&width=200px&"
@@ -42,16 +42,19 @@ $("#store").empty();
 
 //create new div and img element
 //append images to page
+
     for (var i = 0; i < response.data.length; i++) {
-      var storeGiffs = $("<div>");
+      var storeGiffs = $("<div class ='images'>");
       var imageGiffs = $("<img>");
       imageGiffs.addClass("gif-image");
       imageGiffs.attr("src", response.data[i].images.fixed_height_still.url);
       imageGiffs.attr("data-still", response.data[i].images.fixed_height_still.url);
-      imageGiffs.attr("data-animate", response.data[i].images.fixed_height.url);
       imageGiffs.attr("data-state", "still");
-      storeGiffs.html(imageGiffs);
-      $("#store").append(storeGiffs);
+      imageGiffs.attr("data-animate", response.data[i].images.fixed_height.url);
+      storeGiffs.append(imageGiffs);
+      storeGiffs.append("<p>" + response.data[i].rating + "</p>");
+      console.log(response.data[i].rating);
+      $("#results").append(storeGiffs);
       console.log(response.data[i].images.fixed_height_still.url);
     }
   });
@@ -67,13 +70,14 @@ $("#submit").on("click", function () {
   console.log(movies);
   
   
+  
 
 })
 
-
-
-$(document).on("click", ".gif-image", function(e) {
-  e.preventDefault();
+//when clicked gifs will animate/still
+//
+$(document).on("click", ".gif-image", function(event) {
+  event.preventDefault();
   var state = $(this).attr("data-state");
   var animateUrl = $(this).attr("data-animate");
   var stillUrl = $(this).attr("data-still");
