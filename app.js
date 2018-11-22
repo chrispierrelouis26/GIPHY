@@ -53,6 +53,7 @@ $("#results").empty();
       imageGiffs.attr("data-animate", response.data[i].images.fixed_height.url);
       storeGiffs.append(imageGiffs);
       storeGiffs.append("<p>" + response.data[i].rating + "</p>");
+      storeGiffs.append("<p>" + response.data[i].trending_datetime + "</p>");
       console.log(response.data[i].rating);
       $("#results").append(storeGiffs);
       console.log(response.data[i].images.fixed_height_still.url);

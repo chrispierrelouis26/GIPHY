@@ -1,10 +1,16 @@
 .press{
-    align-content: right;
     background: black;
-    color: red;
-    text-align: center;
-    
-    
+    color:lightblue;
+    border: 2px inset lightblue; 
+}
+
+.jumbotron {
+    background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
+    max-width: 90%;
+}
+
+.container{
+    max-width: 100%;
 }
 
 
@@ -22,10 +28,49 @@ img {
     margin: 10px;
     height: 250px;
     width: 250px;
-  
-
+    border-radius:50px;
+    -moz-border-radius:50px;
+    -webkit-border-radius:50px;
+    border: 8px inset rgb(214, 231, 236);
+    transition: border-width 0.s linear;
+    max-width: 90%;
 }
+
+
+
+
+
 
 .images {
     float: left;
+    font: yellow;
+
+  
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+background-color: black;
+    }
+
+    .press {
+        float: left;
+    }
+
+    h1 {
+        float: left;
+    }
+
+    p{
+        font-family: 'Amatic SC', cursive;
+        color: white;
+     
+    }
+
+    
+}
+
+
+
+
+
