@@ -1,7 +1,7 @@
 .press{
     background: black;
-    color:lightblue;
-    border: 2px inset lightblue; 
+    color:rgb(214, 231, 236);
+    border: 2px inset rgb(214, 231, 236); 
 }
 
 .jumbotron {
@@ -31,11 +31,17 @@ img {
     border-radius:50px;
     -moz-border-radius:50px;
     -webkit-border-radius:50px;
-    border: 8px inset rgb(214, 231, 236);
-    transition: border-width 0.s linear;
+    border: 4px inset rgb(214, 231, 236);
     max-width: 90%;
+ 
 }
 
+img:hover
+{
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        transform: scale(0.8);
+}
 
 
 
@@ -43,12 +49,11 @@ img {
 
 .images {
     float: left;
-    font: yellow;
 
   
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     body {
 background-color: black;
     }
@@ -63,11 +68,14 @@ background-color: black;
 
     p{
         font-family: 'Amatic SC', cursive;
-        color: white;
+        color: rgb(214, 231, 236);
      
     }
 
-    
+    img{
+        opacity: 0.5;
+    filter: alpha(opacity=50);
+    }
 }
 
 
